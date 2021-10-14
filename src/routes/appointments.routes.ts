@@ -4,12 +4,16 @@ import { parseISO } from 'date-fns'
 import { getCustomRepository } from 'typeorm'
 import AppointmentsRepository from '../repositories/AppointmentsRepository'
 import CreateAppointmentService from '../services/CreateAppointmentService'
+import ensureAuthenticated from '../middleware/ensureAuthenticated'
 
 const appointmentsRouter = Router()
 
+appointmentsRouter.use(ensureAuthenticated)
+
 appointmentsRouter.get('/', async (req, res) => {
+  const { id } = req.user
   const appointmentsRepository = getCustomRepository(AppointmentsRepository)
-  const appointments = await appointmentsRepository.find()
+  const appointments = await appointmentsRepository.find({ where: { id } })
   return res.json(appointments)
 })
 
