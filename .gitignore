@@ -1,3 +1,7 @@
+# multer
+tmp/*
+!tmp/.gitkeep
+
 # Logs
 logs
 *.log
