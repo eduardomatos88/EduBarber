@@ -8,11 +8,11 @@ export default createGlobalStyle`
     outline: 0;
   }
   body {
-    background-color: #312E28;
+    background-color: #141210;
     color: #ffffff;
     -webkit-font-smoothing: antialiased;
   }
-  body, :-ms-input-placeholder, button {
+  body, input, button {
     font-family: 'Roboto Slab', serif;
     font-size: 16px;
   }
