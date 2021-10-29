@@ -1,5 +1,6 @@
 import 'reflect-metadata'
 import express from 'express'
+import cors from 'cors'
 
 import routes from './routes'
 
@@ -8,6 +9,8 @@ import uploadConfig from './config/upload'
 import './database'
 
 const server = express()
+
+server.use(cors())
 
 server.use(express.json())
 

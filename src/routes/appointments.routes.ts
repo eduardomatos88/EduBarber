@@ -5,6 +5,7 @@ import { getCustomRepository } from 'typeorm'
 import AppointmentsRepository from '../repositories/AppointmentsRepository'
 import CreateAppointmentService from '../services/CreateAppointmentService'
 import ensureAuthenticated from '../middleware/ensureAuthenticated'
+import AppError from '../errors/AppError'
 
 const appointmentsRouter = Router()
 
@@ -30,7 +31,7 @@ appointmentsRouter.post('/', async (req, res) => {
 
     return res.json(appointment)
   } catch (err) {
-    if (err instanceof Error) {
+    if (err instanceof AppError) {
       return res.status(400).json({ error: err.message })
     }
     return res.json({ error: 'Server error' })

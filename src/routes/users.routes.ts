@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import multer from 'multer'
 import uploadConfig from '../config/upload'
+import AppError from '../errors/AppError'
 
 import ensureAuthenticated from '../middleware/ensureAuthenticated'
 import CreateUserService from '../services/CreateUserService'
@@ -17,7 +18,7 @@ usersRouter.post('/', async (req, res) => {
     const user = await create.execute({ name, email, password })
     return res.json(user)
   } catch (err) {
-    if (err instanceof Error) {
+    if (err instanceof AppError) {
       return res.status(400).json({ error: err.message })
     }
     return res.json({ error: 'Server error' })
@@ -37,7 +38,7 @@ usersRouter.patch(
       })
       return res.json(user)
     } catch (err) {
-      if (err instanceof Error) {
+      if (err instanceof AppError) {
         return res.status(400).json({ error: err.message })
       }
       return res.json({ error: 'Server error' })
