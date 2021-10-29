@@ -6,14 +6,12 @@ import Routes from './routes'
 import GlobalStyle from './styles/global'
 
 const App: FC = () => (
-  <>
-    <BrowserRouter>
-      <AppProvider>
-        <Routes />
-      </AppProvider>
-      <GlobalStyle />
-    </BrowserRouter>
-  </>
+  <BrowserRouter>
+    <AppProvider>
+      <Routes />
+    </AppProvider>
+    <GlobalStyle />
+  </BrowserRouter>
 )
 
 export default App
