@@ -1,6 +1,6 @@
+import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 import { StatusBar, View } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native'
 
 import AuthRoutes from './routes'
 
