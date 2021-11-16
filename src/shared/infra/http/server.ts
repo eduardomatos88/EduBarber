@@ -1,11 +1,13 @@
 import 'reflect-metadata'
-import express from 'express'
 import cors from 'cors'
+import express from 'express'
 
 import uploadConfig from '@config/upload'
+
 import routes from './routes'
 
-import '../typeorm'
+import '@shared/infra/typeorm'
+import '@shared/container'
 
 const server = express()
 
