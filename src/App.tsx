@@ -2,14 +2,17 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 import { StatusBar, View } from 'react-native'
 
-import AuthRoutes from './routes'
+import AppProvider from './hooks'
+import AuthRoutes from './routes/auth.routes'
 
 const App: React.FC = () => (
   <NavigationContainer>
     <StatusBar barStyle="light-content" backgroundColor="#312e38" />
-    <View style={{ backgroundColor: '#312e38', flex: 1 }}>
-      <AuthRoutes />
-    </View>
+    <AppProvider>
+      <View style={{ backgroundColor: '#312e38', flex: 1 }}>
+        <AuthRoutes />
+      </View>
+    </AppProvider>
   </NavigationContainer>
 )
 
