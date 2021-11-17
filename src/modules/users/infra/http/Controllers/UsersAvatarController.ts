@@ -6,7 +6,7 @@ import UpdateUserAvatarService from '@modules/users/services/UpdateUserAvatarSer
 import AppError from '@shared/errors/AppError'
 
 class UsersAvatarController {
-  async update(req: Request, res: Response): Promise<Response> {
+  public async update(req: Request, res: Response): Promise<Response> {
     try {
       const update = container.resolve(UpdateUserAvatarService)
       const user = await update.execute({

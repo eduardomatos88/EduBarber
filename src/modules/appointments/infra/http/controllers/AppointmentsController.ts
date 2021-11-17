@@ -7,7 +7,7 @@ import CreateAppointmentService from '@modules/appointments/services/CreateAppoi
 import AppError from '@shared/errors/AppError'
 
 class AppointmentsController {
-  async create(req: Request, res: Response): Promise<Response> {
+  public async create(req: Request, res: Response): Promise<Response> {
     try {
       const { provider_id, date } = req.body
       const parsedDate = parseISO(date)

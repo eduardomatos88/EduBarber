@@ -6,7 +6,7 @@ import CreateUserService from '@modules/users/services/CreateUserService'
 import AppError from '@shared/errors/AppError'
 
 class UsersController {
-  async create(req: Request, res: Response): Promise<Response> {
+  public async create(req: Request, res: Response): Promise<Response> {
     try {
       const { name, email, password } = req.body
       const create = container.resolve(CreateUserService)

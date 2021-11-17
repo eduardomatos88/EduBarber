@@ -7,7 +7,7 @@ import AppError from '@shared/errors/AppError'
 import UsersRepository from '../../typeorm/repositories/UsersRepository'
 
 class SessionsController {
-  async create(req: Request, res: Response): Promise<Response> {
+  public async create(req: Request, res: Response): Promise<Response> {
     try {
       const { email, password } = req.body
 
