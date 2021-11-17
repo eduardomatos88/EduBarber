@@ -14,6 +14,8 @@ function globalExceptionHandler(
       message: error.message,
     })
   }
+  // eslint-disable-next-line no-console
+  console.log(error)
   return res
     .status(500)
     .json({ status: 'error', message: 'Internal server error' })
