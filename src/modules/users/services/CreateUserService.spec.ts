@@ -32,7 +32,7 @@ describe('CreateUser', () => {
 
     await expect(
       create.execute({
-        name: 'John Doe',
+        name: 'John Doe 2',
         email: 'test@johndoe.com',
         password: '123456',
       }),

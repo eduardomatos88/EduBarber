@@ -9,12 +9,6 @@ const appointmentsControllers = new AppointmentsController()
 
 appointmentsRouter.use(ensureAuthenticated)
 
-// appointmentsRouter.get('/', async (req, res) => {
-//   const { id } = req.user
-//   const appointments = await appointmentsRepository.find({ where: { id } })
-//   return res.json(appointments)
-// })
-
 appointmentsRouter.post('/', appointmentsControllers.create)
 
 export default appointmentsRouter
