@@ -6,6 +6,7 @@
     "module": "commonjs",
     "rootDir": "./",
     "baseUrl": "./",
+    "allowJs": true,
     "paths": {
       "@modules/*": ["./src/modules/*"],
       "@config/*": ["./src/config/*"],

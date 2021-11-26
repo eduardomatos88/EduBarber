@@ -1,3 +1,6 @@
+#typeorm
+ormconfig.json
+
 # multer
 tmp/*
 !tmp/.gitkeep
