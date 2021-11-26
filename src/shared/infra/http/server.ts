@@ -1,4 +1,5 @@
 import 'reflect-metadata'
+import { errors } from 'celebrate'
 import cors from 'cors'
 import express from 'express'
 import 'express-async-errors'
@@ -18,6 +19,8 @@ server.use(cors())
 server.use(express.json())
 server.use('/files', express.static(uploadConfig.tmpFolder))
 server.use(routes)
+
+server.use(errors())
 
 server.use(globalExceptionHandler)
 
