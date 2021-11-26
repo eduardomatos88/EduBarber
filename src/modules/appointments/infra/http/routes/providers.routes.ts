@@ -24,5 +24,4 @@ providersRouter.get(
   '/:provider_id/day-availability',
   providersDayAvailabilityController.index,
 )
-
 export default providersRouter
