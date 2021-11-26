@@ -1,15 +1,21 @@
+import FakeNotificationRepository from '@modules/notifications/repositories/fakes/FakeNotificationRepository'
 import AppError from '@shared/errors/AppError'
 
 import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentsRepository'
 import CreateAppointmentService from './CreateAppointmentService'
 
 let fakeAppointmentRepository: FakeAppointmentsRepository
+let fakeNotificationRepository: FakeNotificationRepository
 let create: CreateAppointmentService
 
 describe('CreateAppointment', () => {
   beforeEach(() => {
     fakeAppointmentRepository = new FakeAppointmentsRepository()
-    create = new CreateAppointmentService(fakeAppointmentRepository)
+    fakeNotificationRepository = new FakeNotificationRepository()
+    create = new CreateAppointmentService(
+      fakeAppointmentRepository,
+      fakeNotificationRepository,
+    )
   })
   it('should be able to create a new appointment', async () => {
     jest
