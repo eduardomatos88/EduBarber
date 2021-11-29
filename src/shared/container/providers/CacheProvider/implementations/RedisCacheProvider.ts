@@ -9,7 +9,7 @@ class RedisCacheProvider implements ICacheProvider {
   constructor() {
     this.client = new IORedis(cacheConfig.config.redis)
   }
-  public async add(key: string, value: unknown): Promise<void> {
+  public async add(key: string, value: any): Promise<void> {
     await this.client.set(key, JSON.stringify(value))
   }
   public async recover<T>(key: string): Promise<T | null> {

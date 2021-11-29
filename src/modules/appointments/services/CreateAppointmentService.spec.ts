@@ -1,4 +1,5 @@
 import FakeNotificationRepository from '@modules/notifications/repositories/fakes/FakeNotificationRepository'
+import FakeCacheProvider from '@shared/container/providers/CacheProvider/fakes/FakeCacheProvider'
 import AppError from '@shared/errors/AppError'
 
 import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentsRepository'
@@ -6,15 +7,18 @@ import CreateAppointmentService from './CreateAppointmentService'
 
 let fakeAppointmentRepository: FakeAppointmentsRepository
 let fakeNotificationRepository: FakeNotificationRepository
+let fakeCacheProvider: FakeCacheProvider
 let create: CreateAppointmentService
 
 describe('CreateAppointment', () => {
   beforeEach(() => {
     fakeAppointmentRepository = new FakeAppointmentsRepository()
     fakeNotificationRepository = new FakeNotificationRepository()
+    fakeCacheProvider = new FakeCacheProvider()
     create = new CreateAppointmentService(
       fakeAppointmentRepository,
       fakeNotificationRepository,
+      fakeCacheProvider,
     )
   })
   it('should be able to create a new appointment', async () => {
