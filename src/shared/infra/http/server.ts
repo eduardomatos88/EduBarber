@@ -10,12 +10,14 @@ import globalExceptionHandler from '@shared/errors/globalExceptionHandler'
 import uploadConfig from '@config/upload'
 
 import routes from './routes'
+import rateLimiter from './routes/middlewares/rateLimiter'
 
 import '@shared/infra/typeorm'
 import '@shared/container'
 
 const server = express()
 
+server.use(rateLimiter)
 server.use(cors())
 server.use(express.json())
 server.use('/files', express.static(uploadConfig.tmpFolder))
