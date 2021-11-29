@@ -1,3 +1,4 @@
+import { instanceToInstance } from 'class-transformer'
 import { Request, Response } from 'express'
 import { container } from 'tsyringe'
 
@@ -8,7 +9,7 @@ class UsersController {
     const { name, email, password } = req.body
     const create = container.resolve(CreateUserService)
     const user = await create.execute({ name, email, password })
-    return res.json(user)
+    return res.json(instanceToInstance(user))
   }
 }
 

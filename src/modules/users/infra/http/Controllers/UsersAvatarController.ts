@@ -1,3 +1,4 @@
+import { instanceToInstance } from 'class-transformer'
 import { Request, Response } from 'express'
 import { container } from 'tsyringe'
 
@@ -10,7 +11,7 @@ class UsersAvatarController {
       user_id: req.user.id,
       avatarFilename: req.file?.filename,
     })
-    return res.json(user)
+    return res.json(instanceToInstance(user))
   }
 }
 

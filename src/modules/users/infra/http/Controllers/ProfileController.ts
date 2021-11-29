@@ -1,3 +1,4 @@
+import { instanceToInstance } from 'class-transformer'
 import { Request, Response } from 'express'
 import { container } from 'tsyringe'
 
@@ -24,7 +25,7 @@ class ProfileController {
       old_password,
       password,
     })
-    return res.json(user)
+    return res.json(instanceToInstance(user))
   }
 }
 

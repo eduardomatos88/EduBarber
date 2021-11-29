@@ -1,3 +1,4 @@
+import { instanceToInstance } from 'class-transformer'
 import { Request, Response } from 'express'
 import { container } from 'tsyringe'
 
@@ -12,8 +13,7 @@ class SessionsController {
       email,
       password,
     })
-
-    return res.json({ user, token })
+    return res.json({ user: instanceToInstance(user), token })
   }
 }
 
