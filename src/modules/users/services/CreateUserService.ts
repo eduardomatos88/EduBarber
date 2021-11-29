@@ -1,5 +1,6 @@
 import { inject, injectable } from 'tsyringe'
 
+import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider'
 import AppError from '@shared/errors/AppError'
 
 import ICreateUserDTO from '../dtos/ICreateUserDTO'
@@ -14,6 +15,8 @@ class CreateUserService {
     private usersRepository: IUsersRepository,
     @inject('HashProvider')
     private hashProvider: IHashProvider,
+    @inject('CacheProvider')
+    private cacheProvider: ICacheProvider,
   ) {}
   public async execute({
     name,
@@ -30,6 +33,9 @@ class CreateUserService {
       email,
       password: hashedPassword,
     })
+
+    await this.cacheProvider.invalidadePrefix('providers-list')
+
     return user
   }
 }
