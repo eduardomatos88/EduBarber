@@ -2,8 +2,14 @@ import { createContext, FC, useCallback, useContext, useState } from 'react'
 
 import api from '../services/apiClient'
 
+interface IUser {
+  id: string
+  avatar_url: string
+  name: string
+}
+
 interface IAuthState {
-  user: object
+  user: IUser
   token: string
 }
 
@@ -13,7 +19,7 @@ interface ISignInCredentials {
 }
 
 interface IAuthContext {
-  user: object
+  user: IUser
   signIn(credentials: ISignInCredentials): Promise<void>
   signOut(): void
 }
@@ -35,7 +41,6 @@ export const AuthProvider: FC = ({ children }) => {
       email,
       password,
     })
-    console.log(response)
     const { token, user } = response.data
 
     localStorage.setItem('@EduBarber:token', token)
