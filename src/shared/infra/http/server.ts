@@ -20,7 +20,7 @@ const server = express()
 server.use(rateLimiter)
 server.use(cors())
 server.use(express.json())
-server.use('/files', express.static(uploadConfig.tmpFolder))
+server.use('/files', express.static(uploadConfig.uploadsFolder))
 server.use(routes)
 
 server.use(errors())
