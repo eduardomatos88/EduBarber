@@ -1,3 +1,4 @@
+import { instanceToInstance } from 'class-transformer'
 import { inject, injectable } from 'tsyringe'
 
 import User from '@modules/users/infra/typeorm/entities/User'
@@ -25,7 +26,10 @@ class ListProvidersService {
       users = await this.userRepository.findAllProviders({
         except_user_id: user_id,
       })
-      await this.cacheProvider.add(`providers-list:${user_id}`, users)
+      await this.cacheProvider.add(
+        `providers-list:${user_id}`,
+        instanceToInstance(users),
+      )
     }
 
     return users
