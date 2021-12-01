@@ -35,6 +35,7 @@ export const AuthProvider: FC = ({ children }) => {
       email,
       password,
     })
+    console.log(response)
     const { token, user } = response.data
 
     localStorage.setItem('@EduBarber:token', token)
