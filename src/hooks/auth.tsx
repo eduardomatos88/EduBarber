@@ -32,6 +32,7 @@ export const AuthProvider: FC = ({ children }) => {
     const user = localStorage.getItem('@EduBarber:user')
 
     if (token && user) {
+      api.defaults.headers.common.Authorization = `Bearer ${token}`
       return { token, user: JSON.parse(user) }
     }
     return {} as IAuthState
@@ -45,6 +46,8 @@ export const AuthProvider: FC = ({ children }) => {
 
     localStorage.setItem('@EduBarber:token', token)
     localStorage.setItem('@EduBarber:user', JSON.stringify(user))
+
+    api.defaults.headers.common.Authorization = `Bearer ${token}`
     setData({ token, user })
   }, [])
 
