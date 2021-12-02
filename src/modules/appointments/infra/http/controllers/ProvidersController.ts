@@ -1,3 +1,4 @@
+import { instanceToInstance } from 'class-transformer'
 import { Request, Response } from 'express'
 import { container } from 'tsyringe'
 
@@ -8,7 +9,7 @@ class ProvidersController {
     const user_id = req.user.id
     const listProviders = container.resolve(ListProvidersService)
     const providers = await listProviders.execute({ user_id })
-    return res.json(providers)
+    return res.json(instanceToInstance(providers))
   }
 }
 
