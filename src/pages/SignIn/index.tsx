@@ -2,7 +2,7 @@ import { FormHandles } from '@unform/core'
 import { Form } from '@unform/web'
 import { FC, useCallback, useRef } from 'react'
 import { FiLock, FiLogIn, FiMail } from 'react-icons/fi'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import * as Yup from 'yup'
 
 import logoImg from '../../assets/logo.svg'
@@ -22,6 +22,7 @@ const SignIn: FC = () => {
   const formRef = useRef<FormHandles>(null)
   const { signIn } = useAuth()
   const { addToast } = useToast()
+  const history = useHistory()
 
   const handleSubmit = useCallback(
     async (data: ISignInFormData) => {
@@ -41,6 +42,7 @@ const SignIn: FC = () => {
           email: data.email,
           password: data.password,
         })
+        history.push('/dashboard')
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
           const errors = getValidationErrors(error)
@@ -54,7 +56,7 @@ const SignIn: FC = () => {
         })
       }
     },
-    [signIn, addToast],
+    [signIn, addToast, history],
   )
   return (
     <Container>

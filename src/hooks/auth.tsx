@@ -56,6 +56,7 @@ export const AuthProvider: FC = ({ children }) => {
   const signOut = useCallback(() => {
     localStorage.removeItem('@EduBarber:token')
     localStorage.removeItem('@EduBarber:user')
+    setData({} as IAuthState)
   }, [])
 
   const updateUser = useCallback(
@@ -80,8 +81,5 @@ export const AuthProvider: FC = ({ children }) => {
 
 export const useAuth = (): IAuthContext => {
   const context = useContext(AuthContext)
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider')
-  }
   return context
 }

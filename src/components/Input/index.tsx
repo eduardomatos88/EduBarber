@@ -16,7 +16,7 @@ import { Container, Errors } from './styles'
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   containerStyle?: object
-  icon: ComponentType<IconBaseProps>
+  icon?: ComponentType<IconBaseProps>
 }
 
 const Input: FC<IInputProps> = ({
@@ -55,6 +55,7 @@ const Input: FC<IInputProps> = ({
       isErrored={!!error}
       isFilled={isFilled}
       isFocused={isFocused}
+      data-testid="input-container"
     >
       {Icon && <Icon size={20} />}
       <input
