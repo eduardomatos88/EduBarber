@@ -1,2 +1,4 @@
 # EduBarber-Backend
-Backend de gerenciamento de uma barbearia
+
+Sistema completo de gerenciamento de barbeiros e clientes.
+
